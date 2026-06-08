@@ -66,7 +66,7 @@ export const useChatStore = defineStore('chat', () => {
     }
   }
 
-  const sendMessage = async (content: string, imageIds: string[] = []) => {
+  const sendMessage = async (content: string) => {
     if (!currentConversationId.value) return
 
     const tempId = -Date.now()
@@ -75,14 +75,13 @@ export const useChatStore = defineStore('chat', () => {
       conversation_id: currentConversationId.value,
       role: 'user',
       content,
-      images: imageIds,
       created_at: new Date().toISOString()
     }
     messages.value.push(userMsg)
 
     sending.value = true
     try {
-      const response = await chatApi.sendMessage(currentConversationId.value, content, imageIds)
+      const response = await chatApi.sendMessage(currentConversationId.value, content)
       const idx = messages.value.findIndex(m => m.id === tempId)
       if (idx !== -1) {
         messages.value[idx] = response.data.user_message
@@ -94,16 +93,6 @@ export const useChatStore = defineStore('chat', () => {
       throw error
     } finally {
       sending.value = false
-    }
-  }
-
-  const uploadFile = async (file: File) => {
-    try {
-      const response = await chatApi.uploadFile(file)
-      return response.data
-    } catch (error) {
-      console.error('上传文件失败:', error)
-      throw error
     }
   }
 
@@ -158,7 +147,6 @@ export const useChatStore = defineStore('chat', () => {
     deleteConversation,
     selectConversation,
     sendMessage,
-    uploadFile,
     stopGeneration,
     updateAiSettings,
     loadAiSettings

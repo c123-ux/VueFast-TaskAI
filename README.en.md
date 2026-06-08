@@ -1,10 +1,10 @@
 # VueFast-TaskAI
 
-> Personal Task Management + AI Chat Assistant | Vue 3 + FastAPI + GLM-4-Flash
+> Personal Task Management + AI Chat Assistant | Vue 3 + FastAPI
 
 Author: [c123-ux](https://github.com/c123-ux)
 
-A full-stack personal task management application built with **Vue 3 + TypeScript + FastAPI + SQLite**, integrated with the **Zhipu GLM-4-Flash** model as an AI chat assistant. Supports task CRUD, category management, multi-condition filtering, and customizable AI chat with role/personality/region settings.
+A full-stack personal task management application built with **Vue 3 + TypeScript + FastAPI + SQLite**, integrated with an AI large language model as an intelligent chat assistant. Supports task CRUD, category management, multi-condition filtering, and customizable AI chat with role/personality/region settings.
 
 ## Features
 
@@ -17,7 +17,7 @@ A full-stack personal task management application built with **Vue 3 + TypeScrip
 - Multi-condition filtering (status / priority / category)
 
 ### 🤖 AI Chat Assistant
-- Intelligent conversations powered by Zhipu GLM-4-Flash
+- Intelligent conversations powered by LLM
 - Multi-conversation management (create / select / delete)
 - Batch conversation deletion with multi-select
 - Customizable AI character, personality, and region
@@ -39,7 +39,7 @@ A full-stack personal task management application built with **Vue 3 + TypeScrip
 | **ORM** | SQLAlchemy 2.0 |
 | **Database** | SQLite |
 | **Validation** | Pydantic 2 |
-| **AI Model** | Zhipu GLM-4-Flash |
+| **AI Model** | Large Language Model |
 | **Async HTTP** | httpx (Zhipu API calls) |
 
 ## Project Structure
@@ -95,7 +95,7 @@ VueFast-TaskAI/
 
 - Python 3.9+
 - Node.js 18+
-- Zhipu API Key ([Apply here](https://open.bigmodel.cn/))
+- AI API Key
 
 ### 1. Configure Backend
 
@@ -113,7 +113,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 
 # Configure API Key (edit .env file)
-# Replace ZHIPUAI_API_KEY=your_api_key_here with your actual key
+# Replace API_KEY=your_api_key_here with your actual key
 ```
 
 ### 2. Start Backend

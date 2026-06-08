@@ -249,7 +249,7 @@ const handleSend = async () => {
   if (!text || chatStore.sending) return
   inputText.value = ''
   try {
-    await chatStore.sendMessage(text, [])
+    await chatStore.sendMessage(text)
   } catch {
     ElMessage.error('发送失败')
   }

@@ -1,10 +1,10 @@
 # VueFast-TaskAI
 
-> 个人任务计划管理 + AI 聊天助手 | Vue 3 + FastAPI + GLM-4-Flash
+> 个人任务计划管理 + AI 聊天助手 | Vue 3 + FastAPI
 
 作者：[c123-ux](https://github.com/c123-ux)
 
-基于 **Vue 3 + TypeScript + FastAPI + SQLite** 的全栈个人任务管理应用，集成 **智谱 GLM-4-Flash** 模型作为 AI 聊天助手，支持任务 CRUD、分类管理、多条件筛选，以及带有角色/性格/地区自定义的智能对话。
+基于 **Vue 3 + TypeScript + FastAPI + SQLite** 的全栈个人任务管理应用，集成 AI 大模型作为智能聊天助手，支持任务 CRUD、分类管理、多条件筛选，以及带有角色/性格/地区自定义的智能对话。
 
 ## 功能特性
 
@@ -17,7 +17,7 @@
 - 多条件筛选（状态/优先级/分类）
 
 ### 🤖 AI 聊天助手
-- 基于智谱 GLM-4-Flash 模型的智能对话
+- 基于大语言模型的智能对话
 - 多对话管理（创建/选择/删除）
 - 批量选择删除对话
 - 支持 AI 角色、性格、地区自定义
@@ -39,8 +39,8 @@
 | **ORM** | SQLAlchemy 2.0 |
 | **数据库** | SQLite |
 | **数据验证** | Pydantic 2 |
-| **AI 模型** | 智谱 GLM-4-Flash |
-| **HTTP 客户端** | httpx (异步调用智谱 API) |
+| **AI 模型** | 大语言模型 |
+| **HTTP 客户端** | httpx |
 
 ## 项目结构
 
@@ -95,7 +95,7 @@ VueFast-TaskAI/
 
 - Python 3.9+
 - Node.js 18+
-- 智谱 API Key（[开放平台申请](https://open.bigmodel.cn/)）
+- AI API Key
 
 ### 1. 配置后端
 
@@ -113,7 +113,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 
 # 配置 API Key（编辑 .env 文件）
-# 将 ZHIPUAI_API_KEY=your_api_key_here 替换为你的真实 Key
+# 将 API_KEY=your_api_key_here 替换为你的真实 Key
 ```
 
 ### 2. 启动后端

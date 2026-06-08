@@ -16,7 +16,6 @@ export interface Message {
   conversation_id: number
   role: 'user' | 'assistant'
   content: string
-  images: string[]
   created_at: string
 }
 
@@ -24,13 +23,6 @@ export interface ChatResponse {
   reply: string
   user_message: Message
   assistant_message: Message
-}
-
-export interface UploadResponse {
-  id: string
-  filename: string
-  size: number
-  mime_type: string
 }
 
 export const chatApi = {
@@ -50,8 +42,8 @@ export const chatApi = {
     return api.get<Message[]>(`/chat/conversations/${conversationId}/messages`)
   },
 
-  sendMessage(conversationId: number, content: string, images: string[] = []) {
-    return api.post<ChatResponse>(`/chat/conversations/${conversationId}/messages`, { content, images })
+  sendMessage(conversationId: number, content: string) {
+    return api.post<ChatResponse>(`/chat/conversations/${conversationId}/messages`, { content })
   },
 
   getConversation(id: number) {
@@ -60,14 +52,6 @@ export const chatApi = {
 
   updateConversation(id: number, data: { ai_role?: string; ai_personality?: string; ai_region?: string }) {
     return api.patch<Conversation>(`/chat/conversations/${id}`, data)
-  },
-
-  uploadFile(file: File) {
-    const form = new FormData()
-    form.append('file', file)
-    return api.post<UploadResponse>('/chat/upload', form, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    })
   },
 
   stopGeneration(conversationId: number) {

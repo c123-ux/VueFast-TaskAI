@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime
-import json
 from ..database import Base
 
 class Conversation(Base):
@@ -24,15 +23,6 @@ class Message(Base):
     conversation_id = Column(Integer, ForeignKey("conversations.id"))
     role = Column(String)
     content = Column(Text)
-    images = Column(Text, default="[]")
     created_at = Column(DateTime, default=datetime.now)
 
     conversation = relationship("Conversation", back_populates="messages")
-
-    def get_images(self):
-        if self.images:
-            return json.loads(self.images)
-        return []
-
-    def set_images(self, img_list):
-        self.images = json.dumps(img_list)

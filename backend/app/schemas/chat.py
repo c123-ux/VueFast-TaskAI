@@ -1,26 +1,16 @@
 from pydantic import BaseModel
-from typing import List, Optional, Dict
+from typing import List, Optional
 from datetime import datetime
 
-class MessageBase(BaseModel):
-    role: str
-    content: str
-
-class MessageCreate(BaseModel):
-    content: str
-    images: List[str] = []
-
-class Message(MessageBase):
+class Message(BaseModel):
     id: int
     conversation_id: int
+    role: str
+    content: str
     created_at: datetime
-    images: List[str] = []
 
     class Config:
         from_attributes = True
-
-class ConversationBase(BaseModel):
-    title: str
 
 class ConversationCreate(BaseModel):
     title: Optional[str] = None
@@ -33,8 +23,9 @@ class ConversationUpdate(BaseModel):
     ai_personality: Optional[str] = None
     ai_region: Optional[str] = None
 
-class Conversation(ConversationBase):
+class Conversation(BaseModel):
     id: int
+    title: str
     ai_role: str = "小美"
     ai_personality: str = "温柔体贴的妹子"
     ai_region: str = "广西"
@@ -60,7 +51,6 @@ class ConversationListItem(BaseModel):
 
 class ChatRequest(BaseModel):
     content: str
-    images: List[str] = []
 
 class ChatResponse(BaseModel):
     reply: str
